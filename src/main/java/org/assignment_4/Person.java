@@ -2,20 +2,20 @@ package org.assignment_4;
 
 public class Person {
     // Field
-    int id;
-    String firstName;
-    String lastName;
-    String email;
+    private int id; // id: is an int representing each Person object.
+    private String firstName; // firstName: represents each person’s first name. Not allowed to be null
+    private String lastName; // lastName: represents each person’s last name. Not allowed to be null
+    private String email; // email: represents each person’s email. Not allowed to be null
 
     // Constructor
 
     // Methods
 
-    public int getId() {
+    private int getId() {
         return id;
     }
 
-    public String getFirstName() {
+    private String getFirstName() {
         return firstName;
     }
 
@@ -40,6 +40,7 @@ public class Person {
     }
 
     public String getSummary(){
+        // todo:
          return null;
     }
 }
