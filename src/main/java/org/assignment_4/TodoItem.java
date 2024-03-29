@@ -4,16 +4,21 @@ import java.time.LocalDate;
 
 public class TodoItem {
     // Field
-    private int id; // id : is an int representing each TodoItem object.
-    String title; // title : representing a title like ‘Change tires.’ Not allowed to be null or empty
+    private final int id; // id : is an int representing each TodoItem object.
+    String title; // title : representing a title like ‘Change tires.’ Not allowed to be null or empty //
     String taskDescription; // description:  is used to hold further information
     boolean done; // done: represent if task is finished
-    LocalDate deadLine;   // deadLine: TodoItem is overdue if current date > deadline. Not allowed to be null
-
+    LocalDate deadLine;   // deadLine: TodoItem is overdue if current date > deadline. Not allowed to be null //
     Person creator; // creator: represent who created this task.
 
     // Constructors
-
+    public TodoItem(int id, String title, String taskDescription, boolean done, LocalDate deadLine){
+        this.id = id;
+        this.title = title;
+        this.taskDescription = taskDescription;
+        this.done = done;
+        this.deadLine = deadLine;
+    }
 
     // Methods
     public int getId() {
@@ -25,6 +30,9 @@ public class TodoItem {
     }
 
     public void setTitle(String title) {
+        if (title == null || title.isEmpty()){
+            throw new IllegalArgumentException("Error: The title cannot be null or empty.");
+        }
         this.title = title;
     }
 
@@ -41,6 +49,9 @@ public class TodoItem {
     }
 
     public void setDeadLine(LocalDate deadLine) {
+        if (deadLine == null){
+            throw new IllegalArgumentException("Error: The DeadLine cannot be null.");
+        }
         this.deadLine = deadLine;
     }
 
@@ -49,8 +60,12 @@ public class TodoItem {
     }
 
     public boolean isDone(){
-        // todo
         return false;
+    }
+
+    public boolean isOverdue(){
+        // todo: should return true if current date has passed deadLine
+        return !done && LocalDate.now().isAfter(deadLine);
     }
 
     public Person getCreator() {
@@ -61,13 +76,26 @@ public class TodoItem {
         this.creator = creator;
     }
 
-    public boolean isOverdue(){
-        // todo: should return true if current date has passed deadLine
-        return false;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        TodoItem other = (TodoItem) obj;
+        return java.util.Objects.equals(id,other.id) &&
+                java.util.Objects.equals(title,other.title) &&
+                java.util.Objects.equals(deadLine, other.deadLine) &&
+                java.util.Objects.equals(done, other.done) &&
+                java.util.Objects.equals(taskDescription, other.taskDescription);
     }
 
-    public String getSummary(){
-        // todo: (see Person)
-        return null;
+    @Override
+    public int hashCode() {
+        // todo
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + getId() + "Title: " + getTitle() + " , DeadLine: " + getDeadLine() + " , Done: " + isDone() +", TaskDescription: " + getTaskDescription();
     }
 }
