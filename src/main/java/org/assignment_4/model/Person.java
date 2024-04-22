@@ -1,8 +1,8 @@
-package org.assignment_4;
+package org.assignment_4.model;
 
 public class Person {
     // Field
-    private final int id; // id: is an int representing each Person object.
+    private  int id; // id: is an int representing each Person object.
     private String firstName;
     private String lastName;
     private String email;
@@ -18,11 +18,15 @@ public class Person {
 
     // Methods
 
-    private int getId() {
+    public int getId() {
         return id;
     }
 
-    private String getFirstName() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
         return firstName;
     }
 

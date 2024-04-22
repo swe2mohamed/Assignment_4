@@ -1,4 +1,4 @@
-package org.assignment_4;
+package org.assignment_4.model;
 
 public class TodoItemTask {
     // Field
@@ -13,6 +13,10 @@ public class TodoItemTask {
     // Methods
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isAssigned(){

@@ -1,10 +1,10 @@
-package org.assignment_4;
+package org.assignment_4.model;
 
 import java.time.LocalDate;
 
 public class TodoItem {
     // Field
-    private final int id; // id : is an int representing each TodoItem object.
+    private int id; // id : is an int representing each TodoItem object.
     String title; // title : representing a title like ‘Change tires.’ Not allowed to be null or empty //
     String taskDescription; // description:  is used to hold further information
     boolean done; // done: represent if task is finished
@@ -23,6 +23,10 @@ public class TodoItem {
     // Methods
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

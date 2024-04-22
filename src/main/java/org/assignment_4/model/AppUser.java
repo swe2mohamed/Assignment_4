@@ -1,4 +1,4 @@
-package org.assignment_4;
+package org.assignment_4.model;
 
 public class AppUser{
     // Field
